@@ -1,28 +1,26 @@
-#SelectSort.py
-#选择排序
-#roseauhan
-print('This is a program about selectsort\nWritten by roseauhan in 21/3/2019\nlanguage is python3\n')
-a = [2,4,3,1,5,78,34,12,89]
+'''
+selectSort
+roseauhan
+2019 3 21
+'''
 
-def selectSort(a):
-    for i in range(0, len(a)-1):
-        mmin = i
-        for j in range(i+1, len(a)):
-            if a[mmin] > a[j]:
-                mmin = j
-        a[mmin],a[i] = a[i],a[mmin]
+def selectSort(input_list):
+        if len(input_list) == 0:
+                return []
+        sorted_list = input_list
+        length = len(sorted_list)
+        for i in range(length):
+                min_index = i
+                for j in range(i+1,length):
+                        if sorted_list[min_index] > sorted_list[j]:
+                                min_index = j
+                if min_index == i:
+                        continue
+                sorted_list[i],sorted_list[min_index] = sorted_list[min_index],sorted_list[i]
+        return sorted_list
 
-print('a[before]:')
-for i in range(len(a)):
-    print(str(a[i])+' ', end='')
-	#python 2.x, print 不换行
-	#>>> print x, 
-	#python 3.x print 不换行
-	#>>> print(x, end="")
-print('\n\n')
-
-
-print('a[after]:')
-selectSort(a)
-for i in range(len(a)):
-    print(str(a[i])+' ' ,end='')
+if __name__ == "__main__":
+    input_list = [1,3,4,52,5,73,234,627,32,23,12,3]
+    print("Before:",input_list)
+    sorted_list = selectSort(input_list)
+    print("After: ",sorted_list)
