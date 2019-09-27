@@ -1,5 +1,9 @@
-# *args 用来发送一个非键值对的可变数量的参数列表给一个函数
+# !/usr/bin/env python3  
+# -*-coding:utf-8 -*-
 def test_var_args():
+    """
+    *args 用来发送一个非键值对的可变数量的参数列表给一个函数
+    """
     def test_var_args(f_arg, *argv):
         print("first normal arg:", f_arg)
         for arg in argv:
@@ -8,8 +12,10 @@ def test_var_args():
     test_var_args('han', 'rose', 'test', 'haha')
 
 
-# **kwargs 允许将不定长度的键值对作为参数传递给一个函数
 def greet_me():
+    """
+     **kwargs 允许将不定长度的键值对作为参数传递给一个函数
+     """
     def greet_me(**kwargs):
         for key, value in kwargs.items():
             print("{0} == {1}".format(key, value))
@@ -17,8 +23,10 @@ def greet_me():
     greet_me(name="roseauhan")
 
 
-# 使用*args，**kwargs调用一个函数
 def test_args_kwargs():
+    """
+    使用*args，**kwargs调用一个函数
+    """
     args = ("two", 3, 5)
     kwargs = {"arg3": 3, "arg2": "two", "arg1": 5}
 
@@ -31,10 +39,12 @@ def test_args_kwargs():
     test_args_kwargs(**kwargs)
 
 
-# Iterable: 可迭代对象 返回__iter__方法或定义了__getitem__方法
-# Iterator: 迭代器     定义了__next__方法
-# Generators 生成器 yield （暂时生成）一个值
 def generator_fibon():
+    """
+    Iterable: 可迭代对象 返回__iter__方法或定义了__getitem__方法
+    Iterator: 迭代器     定义了__next__方法
+    Generators 生成器 yield （暂时生成）一个值
+    """
     def fibon(n):
         a = b = 1
         for i in range(n):
@@ -45,8 +55,10 @@ def generator_fibon():
         print(x)
 
 
-# next() 获取序列的下一个元素 注意越界会报错：StopIteration （for循环已经自动检查）
 def test_generator_function():
+    """ 
+    next() 获取序列的下一个元素 注意越界会报错：StopIteration （for循环已经自动检查）
+    """
     def generator_function():
         for i in range(3):
             yield i
@@ -57,15 +69,19 @@ def test_generator_function():
     print(next(gen))
 
 
-# iter() 可以根据一个可迭代对象返回一个迭代器
 def test_iter():
+    """
+    iter() 可以根据一个可迭代对象返回一个迭代器
+    """
     my_string = "roseauhan"
     iter_my_string = iter(my_string)
     print(next(iter_my_string))
 
 
-# map(要映射的函数，输入list)
 def test_map():
+    """
+    map(要映射的函数，输入list)
+    """
     items = [1, 2, 3, 4, 5, 6]
     squired = list(map(lambda x: x ** 2, items))
     print(squired)
@@ -83,30 +99,38 @@ def test_map():
         print(list(value))
 
 
-# Filter 过滤列表中的元素，符合要求：函数映射到该元素时返回值为True
 def test_filter():
+    """
+    Filter 过滤列表中的元素，符合要求：函数映射到该元素时返回值为True
+    """
     number_list = range(-5, 5)
     less_than_zero = filter(lambda x: x < 0, number_list)
     print(list(less_than_zero))
 
 
-# reduce 计算一个整数列表的乘积
 def test_reduce():
+    """
+    reduce 计算一个整数列表的乘积
+    """
     from functools import reduce
     product = reduce((lambda x, y: x * y), [1, 2, 3, 4])
     print(product)
 
 
-# count 返回某一元素在列表、元组中的个数
 def test_count():
+    """
+    count 返回某一元素在列表、元组中的个数
+    """
     a = (1, 2, 2, 3, 5, 2, 5, 32)
     print(a.count(2))
     b = [1, 3, 45, 2, 1, 1, 2]
     print(b.count(2))
 
 
-# set 不包括重复的值 可用于过滤重复，集合计算
 def test_set():
+    """
+    set 不包括重复的值 可用于过滤重复，集合计算
+    """
     some_list = ['a', 'b', 'c', 'd', 'a', 'b', 'd', 'm']
     dulicates = set([x for x in some_list if some_list.count(x) > 1])
     print(dulicates)
@@ -120,16 +144,19 @@ def test_set():
     print(type(a))  # 可以使用{}直接创建set
 
 
-# 三元运算符 condition_is_true if conditon else condition_is_false
 def test_three_operation():
+    """
+    三元运算符 condition_is_true if conditon else condition_is_false
+    """
     is_fat = True
     state = 'fat' if is_fat else "not fat"
     print(state)
 
 
-# 函数中可以定义函数，也可以返回函数， 函数可以作为参数传递
-# 第一个装饰器
 def test_decorator():
+    """
+    装饰器 函数中可以定义函数，也可以返回函数， 函数可以作为参数传递
+    """
     def a_new_decorator(a_func):
         def wrapTheFunction():
             print("doing things before a_func")
@@ -146,9 +173,10 @@ def test_decorator():
     a_function_requiring_decoration()
 
 
-# Collections 容器 包含多种数据类型
-# defaultdict 不需要检查是否存在key
 def test_defaultdict():
+    """
+    Collections 容器 包含多种数据类型 defaultdict 不需要检查是否存在key
+    """
     from collections import defaultdict
     colours = (
         ('Yasoob', 'Yellow'),
@@ -164,8 +192,10 @@ def test_defaultdict():
     print(favourate_colours)
 
 
-# 字典中对一个键进行嵌套赋值时，若该键不存在，会触发keyerror。本方法将解决该问题
 def test_defaultdict_avoid_keyerror():
+    """
+    字典中对一个键进行嵌套赋值时，若该键不存在，会触发keyerror。本方法将解决该问题
+    """
     import collections
     import json
     tree = lambda: collections.defaultdict(tree)
@@ -174,8 +204,10 @@ def test_defaultdict_avoid_keyerror():
     print(json.dumps(some_dict))
 
 
-# Counter 是一个计数器，帮助我们针对某项数据进行计数
 def test_counter():
+    """
+    Counter 是一个计数器，帮助我们针对某项数据进行计数
+    """
     from collections import Counter
     colours = (
         ('a', '12'),
@@ -192,8 +224,10 @@ def test_counter():
         print(line_count)
 
 
-# deque 提供一个双端队列，可以从头/尾两端添加或删除元素
 def test_deque():
+    """
+    deque 提供一个双端队列，可以从头/尾两端添加或删除元素
+    """
     from collections import deque
     d = deque()
     d.append('1')
@@ -207,31 +241,38 @@ def test_deque():
     print(d)
 
 
-# nametuple 把元组变成一个针对简单任务的容器
-# nametuple 让元组变得“自文档”了
 def test_nametuple():
+    """
+    nametuple 把元组变成一个针对简单任务的容器 让元组变得“自文档”了
+    """
     from collections import namedtuple
     Animal = namedtuple('Animal', 'name age type')
     perry = Animal(name="perry", age=31, type="cat")
     print(perry.age)
 
 
-# Enumerate 枚举 是Python内置函数，允许我们遍历数据并且自动计数
 def test_enumerate():
+    """
+    Enumerate 枚举 是Python内置函数，允许我们遍历数据并且自动计数
+    """
     some_list = ['h', 'z', 'y', 'h', 'y']
     for counter, value in enumerate(some_list):
         print(counter, value)
 
 
-# introspection 对象自省: 运行时判断一个对象得类型的能力
-# dir 返回一个列表，列出一个对象所拥有的属性和方法
 def test_dir():
+    """
+    introspection 对象自省: 运行时判断一个对象得类型的能力
+    dir 返回一个列表，列出一个对象所拥有的属性和方法
+    """
     my_list = [1, 1, 2, 3]
     print(dir(my_list))
 
 
-# type 返回一个对象的类型
 def test_type():
+    """
+    type 返回一个对象的类型
+    """
     print(type([]))
     print(type(''))
     print(type({}))
@@ -239,8 +280,10 @@ def test_type():
     print(type(3))
 
 
-# id 返回任意不同种类对象的唯一ID
 def test_id():
+    """
+    id 返回任意不同种类对象的唯一ID
+    """
     name = "hahah"
     print(id(name))
     print(id(None))
@@ -309,9 +352,10 @@ def test_except():
         print("无论是否异常，这里的代码都会执行")
 
 
-# lambda 表达式 (匿名函数) 若你不想在程序中使用这段代码两次，你也许可以使用lambda表达式，它和普通函数一样
-# 原型：lambda: 参数：操作（参数）
 def test_lambda():
+    """lambda 表达式 (匿名函数) 若你不想在程序中使用这段代码两次，你也许可以使用lambda表达式，它和普通函数一样
+    原型：lambda: 参数：操作（参数）
+    """
     add = lambda x, y: x + y
     print(add(2, 3))
 
@@ -341,8 +385,10 @@ def one_line_code():
     # ...
 
 
-# for 也有else从句，在循环正常结束时执行
 def test_for_else():
+    """
+    for 也有else从句，在循环正常结束时执行
+    """
     for n in range(2,10):
         for x in range(2,n):
             if n % x == 0:
@@ -373,6 +419,14 @@ def test_open():
         print(e)
     finally:
         print("DONE!")
+
+import sys
+def test_argv():
+    print('The command line arguments are:')
+    for i in sys.argv:
+        print(i)
+    print('\n\nThe pythonPath is', sys.path, '\n')
+
 
 
 
@@ -407,4 +461,5 @@ if __name__ == '__main__':
     # test_lambda()
     # one_line_code()
     # test_for_else()
-    test_open()
+    #test_open()
+    test_argv()
