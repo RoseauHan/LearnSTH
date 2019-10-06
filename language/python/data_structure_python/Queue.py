@@ -20,3 +20,15 @@ class Queue(object):
     def size(self):
         """返回队列大小"""
         return len(self.__list)
+
+    def __str__(self):
+        return '{}'.format(self.__list)
+
+if __name__ == "__main__":
+    queue = Queue()
+    queue.enqueue(1)
+    queue.enqueue(2)
+    queue.enqueue(3)
+    print(queue)
+    queue.dequeue()
+

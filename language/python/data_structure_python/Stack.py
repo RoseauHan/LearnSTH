@@ -1,3 +1,11 @@
+import unittest
+
+__author__ = "roseauhan"
+__license__ = "GPL"
+__version__ = "1.0.0"
+__maintainer__ = "roseauhan"
+
+
 class Stack(object):
     '''利用list来实现一个后进先出的栈'''
 
@@ -29,15 +37,56 @@ class Stack(object):
         '''实现打印操作'''
         return '{}'.format(self.__list)
 
+    def __repr__(self):
+        '''实现打印操作'''
+        return '{}'.format(self.__list)
 
-if __name__ == "__main__":
-    stack = Stack()
-    print(stack.is_empty())
-    stack.push(1)
-    stack.push(2)
-    print(stack)
-    print(stack.size())
-    stack.pop()
-    stack.push(4)
-    print(stack)
-    print(stack.is_empty())
+    def __eq__(self, value):
+        """Override the default Equals behavior"""
+        return self.__list == value
+
+
+class TestStack(unittest.TestCase):
+    '''Stack的单元测试'''
+
+    def test_size(self):
+        stack = Stack()
+        stack.push(1)
+        stack.push(2)
+        result = stack.size()
+        self.assertEqual(result, 2, "Should be 2")
+
+    def test_push(self):
+        '''test push operation'''
+        stack = Stack()
+        stack.push(1)
+        stack.push(2)
+        result = stack
+        self.assertEqual(result, [1, 2], "should be [1,2]")
+
+    def test_pop(self):
+        '''test push operation'''
+        stack = Stack()
+        stack.push(1)
+        stack.push(2)
+        stack.pop()
+        result = stack
+        self.assertEqual(result, [1], "should be [1]")
+
+    def test_empty(self):
+        '''test push operation'''
+        stack = Stack()
+        result = stack.is_empty()
+        self.assertTrue(result, "should be True")
+
+    def test_peak(self):
+        '''test push operation'''
+        stack = Stack()
+        stack.push(1)
+        stack.push(2)
+        result = stack.peak()
+        self.assertEqual(result, 2, "should be 2")
+
+
+if __name__ == '__main__':
+    unittest.main()
