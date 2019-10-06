@@ -6,11 +6,11 @@ class Stack(object):
         self.__list = []
 
     def push(self, item):
-        '''出栈'''
+        '''入栈'''
         self.__list.append(item)
 
     def pop(self):
-        '''入栈'''
+        '''出栈'''
         return self.__list.pop()
 
     def peak(self):
@@ -24,3 +24,20 @@ class Stack(object):
     def size(self):
         '''栈元素的个数'''
         return len(self.__list)
+
+    def __str__(self):
+        '''实现打印操作'''
+        return '{}'.format(self.__list)
+
+
+if __name__ == "__main__":
+    stack = Stack()
+    print(stack.is_empty())
+    stack.push(1)
+    stack.push(2)
+    print(stack)
+    print(stack.size())
+    stack.pop()
+    stack.push(4)
+    print(stack)
+    print(stack.is_empty())
